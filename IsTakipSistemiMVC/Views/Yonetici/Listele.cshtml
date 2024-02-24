@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Views/Shared/_LayoutYonetici.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="mb-3">
+        <h3>@ViewBag.personel.PersonelAdSoyad İşleri</h3>
+
+    </div>
+    @if (ViewBag.isSayisi != 0)
+    {
+        foreach (var i in ViewBag.isler)
+        {
+            <div class="card">
+                <div class="card-header bg-black text-center text-white">
+                    @i.IsBaslik
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@i.IsAciklama </li>
+                        <li class="list-group-item">İletilen Tarih:@i.IletilenTarih.ToString("dd MMMM yyyy hh:mm") </li>
+                        <li class="list-group-item">
+                            Teslim Tarihi:@(i.TeslimTarihi !=null ? i.TeslimTarihi.ToString("dd MMMM yyyy hh:mm"): "Henüz Tamamlanmadı")</li>
+                        <li class="list-group-item">İş Durumu:@i.IsDurumlar.DurumAd </li>
+                        <li class="list-group-item">İş Yorumu:@i.IsYorum </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <br />
+        }
+
+    }
+    else
+            {
+                <div class="alert alert-secondary" role="alert" >
+                    Henüz iş Verilmemiş
+                </div>
+            }
+</div>
+

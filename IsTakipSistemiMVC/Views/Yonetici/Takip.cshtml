@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Takip";
+    Layout = "~/Views/Shared/_LayoutYonetici.cshtml";
+}
+
+<div class="container mt-5" >
+    <div class="mb-3">
+        <h3>@ViewBag.birimAd Birimi için Çalışan işlerini listeleme</h3>
+    </div>
+    @using (Html.BeginForm("Takip", "Yonetici", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    <select class="form-select" name="selectPer" id="selectPer">
+                        @foreach (var personel in ViewBag.personeller)
+                        {
+                            <option value="@personel.PersonelID">@personel.PersonelAdSoyad</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-secondary" type="submit">İşleri Getir</button>
+                </div>
+            }
+
+</div>
+
